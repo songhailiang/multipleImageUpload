@@ -60,8 +60,5 @@ dispatch_group_t group = dispatch_group_create();
     });
 ```
 
-# 附上执行效果及异步返回顺序截图
-
-<img src='https://github.com/songhailiang/multipleImageUpload/blob/master/screenshot/screenshot.gif' width=300 />
-
+# 执行效果（异步回调顺序）
 <img src='https://github.com/songhailiang/multipleImageUpload/blob/master/screenshot/screenshot2.png' width=400 />
