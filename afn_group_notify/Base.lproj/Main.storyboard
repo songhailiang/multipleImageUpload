@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wFu-oo-bZj">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -14,18 +14,18 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rs-cg-heh">
-                                <rect key="frame" x="112" y="28" width="60" height="30"/>
+                                <rect key="frame" x="112" y="72" width="60" height="30"/>
                                 <state key="normal" title="选择图片"/>
                                 <connections>
                                     <action selector="pickImageButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2w9-HR-WIc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="API-Tw-EDl">
-                                <rect key="frame" x="239" y="28" width="30" height="30"/>
+                                <rect key="frame" x="239" y="72" width="30" height="30"/>
                                 <state key="normal" title="上传"/>
                                 <connections>
                                     <action selector="uploadButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w1q-ad-Vgj"/>
@@ -40,9 +40,62 @@
                             <constraint firstItem="API-Tw-EDl" firstAttribute="leading" secondItem="3Rs-cg-heh" secondAttribute="trailing" constant="67" id="usc-Ti-Txd"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="HDl-Ld-Rak"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1750" y="422"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Clt-Ah-Ohr">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wFu-oo-bZj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="593-k2-nh0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="55U-2y-hXB" kind="relationship" relationship="rootViewController" id="AFC-n8-FD8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylp-cQ-xV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="637" y="1106"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="doc-Mm-mrg">
+            <objects>
+                <viewController id="55U-2y-hXB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VEK-QB-LYo"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lih-ce-XPT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pC0-Xc-kdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z77-bG-VRS">
+                                <rect key="frame" x="68" y="99" width="41" height="30"/>
+                                <state key="normal" title="Demo"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="W5L-26-Dfr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z77-bG-VRS" firstAttribute="leading" secondItem="pC0-Xc-kdC" secondAttribute="leading" constant="68" id="poc-NE-p2o"/>
+                            <constraint firstItem="z77-bG-VRS" firstAttribute="top" secondItem="VEK-QB-LYo" secondAttribute="bottom" constant="35" id="wcV-tL-oFQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="P34-YR-kcD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="khv-fr-fnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1124.5" y="1105.5"/>
         </scene>
     </scenes>
 </document>

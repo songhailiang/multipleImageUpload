@@ -34,6 +34,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+
+    NSLog(@"dealloc --- %@",NSStringFromClass([self class]));
+}
+
 #pragma mark - Button Action
 
 - (IBAction)pickImageButtonTouched:(id)sender {
@@ -63,6 +68,8 @@
     
     dispatch_group_t group = dispatch_group_create();
     
+    __block BOOL error = NO;
+    
     [self.uploadImageArray enumerateObjectsUsingBlock:^(UIImage *image, NSUInteger idx, BOOL * _Nonnull stop) {
         
         dispatch_group_enter(group);
@@ -70,28 +77,31 @@
                                  parameters:nil
                                       files:@{@"upload":UIImageJPEGRepresentation(image, 0.8)}
                                    complete:^(ResponseData *response) {
-            
+                                       dispatch_group_leave(group);
                                        if (response.success) {
                                            NSLog(@"第%@张图片上传完成...",@(idx));
-                                           
-                                           dispatch_group_leave(group);
                                        }
                                        else {
+                                           error = YES;
                                            NSLog(@"第%@张图片上传失败：%@",@(idx),response.message);
                                        }
         }];
     }];
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        
-        [self doSomethingWhenAllImageUploadSuccess];
+        [self doSomethingWhenAllImageUpload:error];
     });
 }
 
-- (void)doSomethingWhenAllImageUploadSuccess {
+- (void)doSomethingWhenAllImageUpload:(BOOL)error {
 
     NSLog(@"图片全部上传完成");
-    [self alert:@"图片全部上传完成"];
+    if (error) {
+        [self alert:@"图片上传失败！"];
+    }
+    else {
+        [self alert:@"图片上传成功！"];
+    }
 }
 
 #pragma mark - QBImagePickerController

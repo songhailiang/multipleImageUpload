@@ -10,7 +10,7 @@
 #import <MJExtension.h>
 
 #define kHttpRequestTimeoutInterval 60
-#define BASE_URL_API    @"http://******/"   //服务端接口地址
+#define BASE_URL_API    @"http://****/"   //服务端接口地址
 
 @implementation AFFileClient
 
