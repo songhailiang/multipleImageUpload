@@ -8,22 +8,21 @@
 
 1.创建dispatch_group_t
 ```objc
-dispatch_group_t group = dispatch_group_create();
+   dispatch_group_t group = dispatch_group_create();
 ```
 2.使用dispatch_group_enter进入group，表示任务开始
 ```objc
-dispatch_group_enter(group);
+    dispatch_group_enter(group);
 ```
 3.使用dispatch_group_leave退出group，表示任务完成
 ```objc
-dispatch_group_leave(group);
+    dispatch_group_leave(group);
 ```
 4.使用dispatch_group_notify注册group里所有任务完成后的回调block
 ```objc
-dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        
-        [self doSomethingWhenAllImageUploadSuccess];
-});
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        [self doSomethingWhenAllImageUpload:error];
+    });
 ```
 
 注：与dispatch_group_notify对应的还有一个叫dispatch_group_wait的东西，这2者的区别是：
