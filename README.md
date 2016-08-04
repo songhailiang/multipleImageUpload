@@ -35,6 +35,8 @@ dispatch_group_wait：会阻塞当前线程，直到dispatch group中所有任�
 ```objc
 dispatch_group_t group = dispatch_group_create();
     
+    __block BOOL error = NO;
+    
     [self.uploadImageArray enumerateObjectsUsingBlock:^(UIImage *image, NSUInteger idx, BOOL * _Nonnull stop) {
         
         dispatch_group_enter(group);
@@ -42,21 +44,19 @@ dispatch_group_t group = dispatch_group_create();
                                  parameters:nil
                                       files:@{@"upload":UIImageJPEGRepresentation(image, 0.8)}
                                    complete:^(ResponseData *response) {
-            
+                                       dispatch_group_leave(group);
                                        if (response.success) {
                                            NSLog(@"第%@张图片上传完成...",@(idx));
-                                           
-                                           dispatch_group_leave(group);
                                        }
                                        else {
+                                           error = YES;
                                            NSLog(@"第%@张图片上传失败：%@",@(idx),response.message);
                                        }
         }];
     }];
     
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        
-        [self doSomethingWhenAllImageUploadSuccess];
+        [self doSomethingWhenAllImageUpload:error];
     });
 ```
 
